@@ -8,11 +8,11 @@ dotenv.config();
 const port = process.env.Port || 3000;
 const dbUri = process.env.DataBase_User;
 
-
-
 async function main() {
   if (!dbUri) {
-    throw new Error('Database connection string (DataBase_User) is not defined in the .env file.');
+    throw new Error(
+      'Database connection string (DataBase_User) is not defined in the .env file.',
+    );
   }
 
   try {
