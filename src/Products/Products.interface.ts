@@ -1,24 +1,19 @@
-
-export type variants={
-type:string;
-value: string;
+export interface variants {
+  type: string;
+  value: string;
 }
 
-export type inventory={
-    quantity:number;
-    inStock: boolean
+export interface inventory {
+  quantity: number;
+  inStock: boolean;
 }
 
-
-
-
-export type Products={
-    name:string;
-    description:string;
-    price:number;
-    category:string;
-    tags: string[];
-    variants:variants[];
-    inventory:inventory;
+export interface Products {
+  name: string;
+  description: string;
+  price: number;
+  category: string;
+  tags: string[];
+  variants: variants[];
+  inventory: inventory;
 }
-
