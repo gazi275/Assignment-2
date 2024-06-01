@@ -28,5 +28,3 @@ main();
 app.listen(port, () => {
   console.log(`The server is running on port ${port}`);
 });
-
-

@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import mongoose from 'mongoose';
+
 import { Products, inventory, variants } from './Products.interface';
 
 export const variantsSchema = new Schema<variants>({
