@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response, request } from 'express';
 import { ProductsServiceToController } from './Products.service';
 
 const CreateProductController = async (req: Request, res: Response) => {
@@ -79,10 +79,29 @@ const deleteProductController = async (req: Request, res: Response) => {
   }
 };
 
+const searchProductController=async(req:Request,res:Response)=>{
+    try{
+        const searchTerm = req.query?.searchTerm;
+        const result = await ProductsServiceToController.searchProduct(searchTerm as string);
+        res.status(200).send({
+          success: true,
+          message: "Product fetched successfully",
+          data: result,
+        });
+    }
+    
+   catch (error) {
+    res.status(500).json({ success: false, message: 'Internal server error', error });
+  }
+;
+   
+}
+
 export const ControllerBackToRoute = {
   CreateProductController,
   getProductsController,
   getproductsByIdController,
   UpdateProductController,
   deleteProductController,
+  searchProductController
 };

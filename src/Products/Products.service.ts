@@ -24,10 +24,17 @@ const deleteProductService = async (_id: string) => {
   return result;
 };
 
+const searchProduct=async(searchTerm:string)=>{
+    const regex = new RegExp(searchTerm, 'i'); 
+    const result = await ProductModel.find({ name: regex });
+    return result
+}
+
 export const ProductsServiceToController = {
   ProductsService,
   getProductsService,
   getProductsById,
   UpdateProductService,
   deleteProductService,
+  searchProduct
 };

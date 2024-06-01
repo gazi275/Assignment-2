@@ -6,4 +6,5 @@ router.get('/', ControllerBackToRoute.getProductsController);
 router.get('/:productId', ControllerBackToRoute.getproductsByIdController);
 router.put('/:productId', ControllerBackToRoute.UpdateProductController);
 router.delete('/:productId', ControllerBackToRoute.deleteProductController);
+router.get('/',ControllerBackToRoute.searchProductController)
 export const Productroute = router;
