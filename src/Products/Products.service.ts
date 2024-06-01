@@ -13,11 +13,16 @@ const getProductsById= async(_id:string)=>{
     const result=await ProductModel.findOne({_id})
     return result
 }
+const UpdateProductService=async(_id:string,UpdatedProduct:Products)=>{
+    const result= await ProductModel.findByIdAndUpdate(_id,UpdatedProduct,{ new: true })
+    return result
+}
 
 
 
 export const ProductsServiceToController = {
   ProductsService,
   getProductsService,
-  getProductsById
+  getProductsById,
+  UpdateProductService
 };

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { ProductsServiceToController } from './Products.service';
+import { Products } from './Products.interface';
 
 const CreateProductController = async (req: Request, res: Response) => {
   try {
@@ -47,10 +48,30 @@ try {
 }
 }
 
+ const UpdateProductController=async (req: Request, res: Response) => {
+    
+  
+    try {
+
+        const { productId } = req.params;
+    const updatedProduct = req.body;
+      const result = await ProductsServiceToController.UpdateProductService(productId, updatedProduct);
+      
+      res.status(200).json({
+        "success": true,
+    "message": "Product updated successfully!",
+    "data": result
+      });
+    } catch (error) {
+      res.status(500).json({ message: 'Internal server error', error });
+    }
+  };
+
 
 
 export const ControllerBackToRoute = {
   CreateProductController,
   getProductsController,
-  getproductsByIdController
+  getproductsByIdController,
+  UpdateProductController
 };

@@ -1,6 +1,7 @@
 import express, { Request, Response, Router } from 'express';
 import cors from 'cors';
 import { Productroute } from './Products/Products.route';
+
 const app = express();
 
 app.use(express.json());
