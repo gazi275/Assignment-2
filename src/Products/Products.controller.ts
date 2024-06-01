@@ -18,6 +18,39 @@ const CreateProductController = async (req: Request, res: Response) => {
     });
   }
 };
+
+const getProductsController=async(req:Request,res:Response)=>{
+    try {
+        const ProductId= req.body
+        const result=await ProductsServiceToController.getProductsService() 
+        res.status(200).json({
+            "success": true,
+    "message": "Products fetched successfully!",
+    "data":result
+        })
+    } catch (error) {
+      console.log(error);  
+    }
+
+}
+const getproductsByIdController=async(req:Request,res:Response)=>{
+try {
+    const {productId}=req.params
+    const result=await ProductsServiceToController.getProductsById(productId)
+    res.status(200).json({
+        "success": true,
+        "message": "Product fetched successfully!",
+        data:result
+    }) 
+} catch (error) {
+    console.log(error);
+}
+}
+
+
+
 export const ControllerBackToRoute = {
   CreateProductController,
+  getProductsController,
+  getproductsByIdController
 };
