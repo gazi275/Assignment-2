@@ -67,11 +67,26 @@ try {
     }
   };
 
+  const deleteProductController=async(req:Request,res:Response)=>{
+    try {
+        const {productId}=req.params
+    const result=await ProductsServiceToController.deleteProductService(productId)
+    res.status(200).json({
+        "success": true,
+        "message": "Product deleted successfully!",
+        "data": null 
+    })
+    } catch (error) {
+        console.log(error);
+    }
+  }
+
 
 
 export const ControllerBackToRoute = {
   CreateProductController,
   getProductsController,
   getproductsByIdController,
-  UpdateProductController
+  UpdateProductController,
+  deleteProductController
 };

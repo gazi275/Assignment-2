@@ -17,6 +17,10 @@ const UpdateProductService=async(_id:string,UpdatedProduct:Products)=>{
     const result= await ProductModel.findByIdAndUpdate(_id,UpdatedProduct,{ new: true })
     return result
 }
+const deleteProductService= async(_id:string)=>{
+    const result= await ProductModel.findByIdAndDelete(_id)
+    return result
+}
 
 
 
@@ -24,5 +28,6 @@ export const ProductsServiceToController = {
   ProductsService,
   getProductsService,
   getProductsById,
-  UpdateProductService
+  UpdateProductService,
+  deleteProductService
 };
