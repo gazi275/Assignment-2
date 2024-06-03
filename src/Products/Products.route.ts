@@ -1,10 +1,17 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import { ControllerBackToRoute } from './Products.controller';
 const router = express.Router();
 router.post('/', ControllerBackToRoute.CreateProductController);
-router.get('/', ControllerBackToRoute.getProductsController);
+router.get('/', (req:Request,res:Response)=>{
+    if (req.query?.searchTerm) {
+        ControllerBackToRoute.searchProductController(req,res)
+        
+    } else {
+       ControllerBackToRoute.getProductsController (req,res)
+    }
+});
 router.get('/:productId', ControllerBackToRoute.getproductsByIdController);
 router.put('/:productId', ControllerBackToRoute.UpdateProductController);
 router.delete('/:productId', ControllerBackToRoute.deleteProductController);
-router.get('/', ControllerBackToRoute.searchProductController);
+
 export const Productroute = router;
