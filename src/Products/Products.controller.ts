@@ -1,21 +1,33 @@
 import { Request, Response } from 'express';
 import { ProductsServiceToController } from './Products.service';
+import { productSchema } from './Products.validation';
+import { z } from 'zod';
 
 const CreateProductController = async (req: Request, res: Response) => {
   try {
-    const Products = req.body;
-    const result = await ProductsServiceToController.ProductsService(Products);
+    const validatedProduct = productSchema.parse(req.body);
+    const result = await ProductsServiceToController.ProductsService(
+      validatedProduct,
+    );
     res.status(200).json({
       success: true,
       message: 'Product created successfully!',
       data: result,
     });
   } catch (error) {
-    res.status(200).json({
-      success: false,
-      message: 'Something was wrong',
-      details: error,
-    });
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({
+        success: false,
+        message: 'Validation failed',
+        errors: error.errors,
+      });
+
+      res.status(200).json({
+        success: false,
+        message: 'Something was wrong',
+        details: error,
+      });
+    }
   }
 };
 
@@ -28,9 +40,7 @@ const getProductsController = async (req: Request, res: Response) => {
       message: 'Products fetched successfully!',
       data: result,
     });
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 const getproductsByIdController = async (req: Request, res: Response) => {
   try {
@@ -42,7 +52,10 @@ const getproductsByIdController = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
-    console.log(error);
+    res.status(500).json({
+      success: true,
+      message: `Somethong went wrong! ${error}`,
+    });
   }
 };
 
@@ -75,7 +88,10 @@ const deleteProductController = async (req: Request, res: Response) => {
       data: null,
     });
   } catch (error) {
-    console.log(error);
+    res.status(500).json({
+      success: true,
+      message: `Somrthig went wrong - ${error}!`,
+    });
   }
 };
 

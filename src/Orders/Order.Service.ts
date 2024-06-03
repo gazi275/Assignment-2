@@ -1,5 +1,5 @@
 import { Error } from 'mongoose';
-import { ProductModel } from '../Products.model';
+import { ProductModel } from '../Products/Products.model';
 import { Order } from './Order.interface';
 import { OrderModel } from './Order.model';
 
