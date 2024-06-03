@@ -1,6 +1,14 @@
-import express from "express";
-import { ControllerToRoute } from "./Order.Controller";
-const route=express.Router()
+import express, { Request, Response } from 'express';
+import { ControllerToRoute } from './Order.Controller';
+const route = express.Router();
 
-route.get('/',ControllerToRoute.CreateOrder)
-export const OrderRoute= route
+route.post('/', ControllerToRoute.CreateOrder);
+route.get('/', (req: Request, res: Response) => {
+  if (req.query.email) {
+    ControllerToRoute.getOrderByEmail(req, res);
+  } else {
+    ControllerToRoute.getOrderCOntroller(req, res);
+  }
+});
+
+export const OrderRoute = route;

@@ -8,6 +8,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use('/api/products', Productroute);
-app.use('/api/orders',OrderRoute)
+app.use('/api/orders', OrderRoute);
 
 export default app;
