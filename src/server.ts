@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 // Loa);d environment variables from .env file
 dotenv.config();
 
-const port = process.env.Port || 3000;
+const port = process.env.Port || 5000;
 const dbUri = process.env.DataBase_User;
 
 async function main() {
