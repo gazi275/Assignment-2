@@ -2,44 +2,5 @@ node_modules
 dist
 .env
 
-rules: {
-      ...typescriptPlugin.configs.recommended.rules,
-      // Add or override rules here
-      'prettier/prettier': 'error',
-       // Possible Errors
-       'no-console': 'warn',
-       'no-debugger': 'warn',
-       
-       // Best Practices
-       'curly': 'error',
-       'eqeqeq': ['error', 'always'],
-       'no-implicit-globals': 'error',
-       'no-multi-spaces': 'error',
-       
-       // Variables
-       'no-undef': 'off', // TypeScript handles this
-       '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }],
-       
-       // Stylistic Issues
-       'brace-style': ['error', '1tbs'],
-       'comma-dangle': ['error', 'always-multiline'],
-       'indent': ['error', 2],
-       'linebreak-style': ['error', 'unix'],
-       'quotes': ['error', 'single'],
-       'semi': ['error', 'always'],
-       'space-before-blocks': 'error',
-       'keyword-spacing': ['error', { 'before': true, 'after': true }],
-       
-       // ECMAScript 6
-       'arrow-body-style': ['error', 'as-needed'],
-       'prefer-const': 'error',
-       'prefer-template': 'error',
-       'no-var': 'error',
- 
-       // TypeScript Specific
-       '@typescript-eslint/explicit-function-return-type': 'off',
-       '@typescript-eslint/no-explicit-any': 'warn',
-       '@typescript-eslint/no-non-null-assertion': 'warn',
-       '@typescript-eslint/no-inferrable-types': 'error',
-       '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-    },
+
+.vercel
