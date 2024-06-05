@@ -20,20 +20,17 @@ const CreateOrder = async (req: Request, res: Response) => {
         success: false,
         message: 'Validation failed',
         errors: error.errors,
-      })};
-
-      {
-        res.json({
-          success: false,
-          message: 'Insufficient quantity available in inventory',
-        });
-      }
-
-      
+      });
     }
   }
 
-
+  {
+    res.json({
+      success: false,
+      message: 'Insufficient quantity available in inventory',
+    });
+  }
+};
 const getOrderCOntroller = async (req: Request, res: Response) => {
   try {
     req.body;

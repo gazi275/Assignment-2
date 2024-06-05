@@ -3,7 +3,6 @@ import cors from 'cors';
 import { Productroute } from './Products/Products.route';
 import { OrderRoute } from './Orders/Order.route';
 
-
 const app = express();
 
 app.use(express.json());

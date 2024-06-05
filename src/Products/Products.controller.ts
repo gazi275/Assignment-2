@@ -21,21 +21,15 @@ const CreateProductController = async (req: Request, res: Response) => {
         message: 'Validation failed',
         errors: error.errors,
       });
-    }
-      else{
-        res.status(200).json({
-            success: false,
-            message: 'Something was wrong',
-            details: error,
-          });
-
-      }
-
-      
+    } else {
+      res.status(200).json({
+        success: false,
+        message: 'Something was wrong',
+        details: error,
+      });
     }
   }
-;
-
+};
 const getProductsController = async (req: Request, res: Response) => {
   try {
     req.body;
@@ -67,7 +61,7 @@ const getproductsByIdController = async (req: Request, res: Response) => {
 const UpdateProductController = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
-    const updatedProduct =productSchema.parse (req.body);
+    const updatedProduct = productSchema.parse(req.body);
     const result = await ProductsServiceToController.UpdateProductService(
       productId,
       updatedProduct,
@@ -79,16 +73,15 @@ const UpdateProductController = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
-     if (error instanceof z.ZodError) {
-        return res.status(400).json({
-          success: false,
-          message: 'Validation failed',
-          errors: error.errors,
-        });
-      } else {
-        res.status(500).json({ message: 'Internal server error', error });
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({
+        success: false,
+        message: 'Validation failed',
+        errors: error.errors,
+      });
+    } else {
+      res.status(500).json({ message: 'Internal server error', error });
     }
-    
   }
 };
 
